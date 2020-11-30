@@ -167,7 +167,7 @@ namespace DataStructures
             return index;
         }
 
-        public int FindeIndexOfMin()
+        public int FindIndexOfMin()
         {
             int min = _array[0];
             int index = 0;
@@ -237,6 +237,39 @@ namespace DataStructures
                 {
                     Delete1ByIndex(i);
                 }
+            }
+        }
+
+        public void AddArrayToTheEnd(int[] array)
+        {
+            IncreaseLength(array.Length);
+            for (int i=0; i<array.Length; i++)
+            {
+                _array[Length + i] = array[i];
+            }
+            Length = Length + array.Length;
+        }
+
+        public void AddArrayByIndex(int[] array, int index=0)
+        {
+            IncreaseLength(array.Length);
+
+            Length = Length + array.Length;
+
+            int shiftpoint = index;
+            for (int i=0; i<array.Length; i++)
+            {
+                RightShiftForAdd(shiftpoint);
+                shiftpoint++;
+            }
+            //for (int i = Length+array.Length; i > index+array.Length; i--)
+            //{
+            //    _array[i+array.Length] = _array[i - array.Length];
+            //}
+
+            for (int i=0; i<array.Length; i++)
+            {
+                _array[i+index] = array[i];
             }
         }
 

@@ -51,5 +51,36 @@ namespace DataStructures.Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 0, 2, 3}, new int[] { 1, 2, 3, 2, 0, 2, 3})]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8}, new int[] { 1, 2, 3, 2, 8 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { }, new int[] { 1, 2, 3, 2 })]
+        public void AddArrayToTheEnd(int[] array, int[] addArray, int[] ExpArray)
+        {
+            ArrayList expected = new ArrayList(ExpArray);
+            ArrayList actual = new ArrayList(array);
+
+            actual.AddArrayToTheEnd(addArray);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8, 9 }, 1, new int[] { 1, 8, 9, 2, 3, 2})]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8, 9 }, 0, new int[] { 8, 9, 1, 2, 3, 2 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8 }, 1, new int[] { 1, 8, 2, 3, 2 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8 }, 0, new int[] { 8, 1, 2, 3, 2 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8, 9, 7 }, 1, new int[] { 1, 8, 9, 7, 2, 3, 2 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8, 9, 7 }, 0, new int[] { 8, 9, 7, 1, 2, 3, 2 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { }, 3, new int[] { 1, 2, 3, 2 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { 8, 9 }, 4, new int[] { 1, 2, 3, 2, 8, 9 })]
+        [TestCase(new int[] { 1, 2, 3, 2 }, new int[] { }, 0, new int[] { 1, 2, 3, 2 })]
+        public void AddArrayByIndex(int[] array, int[] addArray, int index, int[] ExpArray)
+        {
+            ArrayList expected = new ArrayList(ExpArray);
+            ArrayList actual = new ArrayList(array);
+
+            actual.AddArrayByIndex(addArray, index);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
