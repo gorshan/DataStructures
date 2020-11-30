@@ -73,11 +73,13 @@ namespace DataStructures
             {
                 throw new Exception("Nothing to delete");
             }
-            Length--;
+           
+            
             if (Length < _TrueLength / 2 + 1)
             {
                 DecreaseLength();
             }
+            Length--;
         }
              
 
@@ -162,6 +164,7 @@ namespace DataStructures
                 if (_array[i] > max)
                 {
                     index = i;
+                    max = _array[i];
                 }
             }
             return index;
@@ -176,9 +179,15 @@ namespace DataStructures
                 if (_array[i] < min)
                 {
                     index = i;
+                    min = _array[i];
                 }
             }
             return index;
+        }
+
+        public void AddByIndex(int index, int value)
+        {
+            throw new NotImplementedException();
         }
 
         public void RangeArrayToBig()
@@ -219,24 +228,17 @@ namespace DataStructures
 
         public void DeleteByFirstValue(int value)
         {
-            for (int i = 1; i < Length; i++)
+            if (GetIndexByValue(value) != -1)
             {
-                if (_array[i] == value)
-                {
-                    Delete1ByIndex(i);
-                    break;
-                }
+                Delete1ByIndex(GetIndexByValue(value));
             }
         }
 
         public void DeleteByValue(int value)
         {
-            for (int i = 1; i < Length; i++)
+            while (GetIndexByValue(value) != -1)
             {
-                if (_array[i] == value)
-                {
-                    Delete1ByIndex(i);
-                }
+                Delete1ByIndex(GetIndexByValue(value));
             }
         }
 
